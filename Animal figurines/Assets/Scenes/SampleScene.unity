@@ -344,7 +344,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -824,7 +824,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -958,7 +958,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1695,6 +1695,19 @@ MonoBehaviour:
   - {fileID: 328581558}
   - {fileID: 1815209450}
   - {fileID: 821326360}
+  imageNumbers:
+  - {fileID: 827390900}
+  - {fileID: 2115111121}
+  - {fileID: 1533610160}
+  - {fileID: 186132221}
+  ObjectImageNumber:
+  - {fileID: 827390898}
+  - {fileID: 2115111119}
+  - {fileID: 1533610158}
+  - {fileID: 186132219}
+  spriteForImgNum:
+  - {fileID: 21300000, guid: d54d02fef40633941b5b03d9669e3713, type: 3}
+  - {fileID: 21300000, guid: 641740baf4a6db34e979809944c72b3f, type: 3}
 --- !u!1 &500021493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,7 +1794,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1915,7 +1928,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2739,7 +2752,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2804,7 +2817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &827390899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2845,7 +2858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d54d02fef40633941b5b03d9669e3713, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2949,7 +2962,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3486,8 +3499,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 496373306}
-        m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_TargetAssemblyTypeName: Numbers, Assembly-CSharp
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4006,7 +4019,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4720,7 +4733,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496373306}
         m_TargetAssemblyTypeName: EnterNumbers, Assembly-CSharp
-        m_MethodName: buttonEnterNumber
+        m_MethodName: buttonNumber
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4788,7 +4801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 641740baf4a6db34e979809944c72b3f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
