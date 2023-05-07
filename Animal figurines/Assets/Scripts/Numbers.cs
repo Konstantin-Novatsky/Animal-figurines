@@ -37,25 +37,30 @@ public class Numbers : MonoBehaviour
         {
             numbers[a].text = Convert.ToString(i); b++;
         }
-        if (a != numbers.Length - 1)
-        {
-            if (green[a] == true) a += 2;
-            else a++;
-        }
-        Debug.Log(b);
+            if (green[a] == false && a != numbers.Length - 1) a ++;
+            else if (a < numbers.Length - 2) a+=2;
+        //green[3] = true;
         Debug.Log(a);
+        Debug.Log(b);
     }
 
     public void backNumber()
     {
-        if (b != -1)
+        if (b > numbers.Length - 1) // конец
         {
+            numbers[a].text = "";
+            if (green[a] == false && a != 0 && a == b) a--;
+            else if (a != 0 && a == b) a -= 2;
+            b--;
+        }
+        else if (b > 0 && b <= numbers.Length - 1) // начало
+        {
+            if (green[a] == false && a != 0) a--;
+            else if (a != 0) a -= 2;
             numbers[a].text = ""; b--;
         }
-        if (green[a] == true && a != 1) a -= 2;
-        else if (a != 0) a--;
-        Debug.Log(b);
         Debug.Log(a);
+        Debug.Log(b);
     }
 
     public void enterNumbers()
