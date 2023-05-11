@@ -15,53 +15,47 @@ public class Numbers : MonoBehaviour
 
     bool[] green;
     bool[] orange;
-    bool[] red;
 
     int b = 0;
     int a = 0;
-    System.Random random = new System.Random();
+    System.Random random = new System.Random((int)DateTime.Now.Ticks);
     int[] randomNumbers;
 
     private void Start()
     {
         green = new bool[numbers.Length];
         orange = new bool[numbers.Length];
-        red = new bool[numbers.Length];
         for (int i = 0; i < numbers.Length; i++) ObjectImageNumber[i].SetActive(false);
         randomizer();
 
-        //green[0] = true;
-        //imageNumbers[0].sprite = spriteForImgNum[0];
-        //ObjectImageNumber[0].SetActive(true);
-        //green[1] = true;
-        //imageNumbers[1].sprite = spriteForImgNum[0];
-        //ObjectImageNumber[1].SetActive(true);
-        //green[2] = true;
-        //imageNumbers[2].sprite = spriteForImgNum[0];
-        //ObjectImageNumber[2].SetActive(true);
-        //green[3] = true;
-        //imageNumbers[3].sprite = spriteForImgNum[0];
-        //ObjectImageNumber[3].SetActive(true);
+        for (int i = 0; i < numbers.Length; i++)
+            Debug.Log(randomNumbers[i]);
+
+
     }
 
     public void buttonNumber(int i)
     {
-        for (int g = 0; g < numbers.Length; g++)
-            if (green[a] == true && a < numbers.Length - 1) { a++; b++; }
+        if (a == numbers.Length) return;
+        for (int g = a; g != numbers.Length; g++)
+            if (green[a] == true && a < numbers.Length - 1) { a++; b = a; } // Проверка клетки на true, если true, то пропускать до тех пор, пока не будет клетка false
         if (b != numbers.Length)
         {
             if (orange[a] == true) numbers[a].color = new Color(0, 0, 0, 1);
-            if (numbers[a].text == "") numbers[a].text = Convert.ToString(i);
+            if (green[a] != true)
+                numbers[a].text = Convert.ToString(i);
+
             b++;
+            Debug.Log(a);
         }
-        if (green[a] == false && a < numbers.Length - 1)
+        if (green[a] == false && a != numbers.Length)
             if (a == numbers.Length - 1)
             {
                 if (green[a - 1] == false)
                     a++;
             }
             else a++;
-        if (green[numbers.Length - 1] == true)
+        if (green[numbers.Length - 1] == true && numbers.Length - 1 == a)
             for (; green[a] == true; a--) b--;
 
 
@@ -71,30 +65,31 @@ public class Numbers : MonoBehaviour
 
     public void backNumber()
     {
-        if (b > numbers.Length - 1) // Конец
-        {
-            numbers[a].text = "";
-            if (green[a] == false && a != 0 && a == b) a--;
-            else if (a != 0 && a == b) a -= 2;
-            b--;
-        }
-        else if (b > 0 && b <= numbers.Length - 1) // Начало
-        {
-            if (green[a] == false && a != 0) a--;
-            else if (a != 0) a -= 2;
-            numbers[a].text = ""; b--;
-        }
-        Debug.Log(a);
-        Debug.Log(b);
+        if (a == 0) return;
+        a--; b--;
+        for (int g = a; g != -1; g--)
+            if (green[a] == true && a != 0) { a--; b = a; if (green[a] == false) numbers[a].text = ""; }
+            else if (green[a] == false)
+            {
+                numbers[a].text = "";
+                Debug.Log(a);
+                Debug.Log(b);
+                return;
+            }
     }
 
     public void enterNumbers()
     {
-        bool TrueOrFalse = false;
-        if (b == numbers.Length)
+        for (int i = 0; i != numbers.Length; i++) // Проверка на заполненность масива
         {
-            for (int i = 0; i < numbers.Length; i++)
+            if (numbers[i].text == "") return;
+
+                }
+        
+            for (int i = 0; i != numbers.Length; i++) { orange[i] = false; green[i] = false; }
+            for (int i = 0; i != numbers.Length; i++)
             {
+                bool TrueOrFalse = false;
                 if (randomNumbers[i] == Int32.Parse(numbers[i].text)) green[i] = true;
                 else if (green[i] == false)
                 {
@@ -103,13 +98,12 @@ public class Numbers : MonoBehaviour
                             for (int c = 0; c < numbers.Length; c++)
                                 if (numbers[i] == numbers[c])
                                     TrueOrFalse = true;
-                    if (TrueOrFalse == false)
+                    if (TrueOrFalse == true)
                         orange[i] = true;
                 }
-                else red[i] = true;
             }
             changeImage();
-            for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i != numbers.Length; i++)
             {
                 if (green[i] == false && orange[i] == false)
                     numbers[i].text = "";
@@ -119,11 +113,12 @@ public class Numbers : MonoBehaviour
             b = 0;
             a = 0;
         }
-    }
+    
 
     private void changeImage()
     {
-        for (int i = 0; i < numbers.Length; i++)
+        for (int i = 0; i != numbers.Length; i++) ObjectImageNumber[i].SetActive(false);
+        for (int i = 0; i != numbers.Length; i++)
         {
             if (green[i] == true)
             {
@@ -141,7 +136,7 @@ public class Numbers : MonoBehaviour
     private void randomizer()
     {
         randomNumbers = new int[numbers.Length];
-        for (int i = 0; i < numbers.Length; i++)
+        for (int i = 0; i != numbers.Length; i++)
             randomNumbers[i] = random.Next(0, 10);
     }
 
