@@ -1,17 +1,17 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GetRandomNumbers : MonoBehaviour
 {
     [SerializeField] public static TMP_Text[] inputField;
 
+    public static int[] randomInputNumbers;
+
     private System.Random random = new();
 
-    private int[] randomInputNumbers;
-
     private bool[] isRepeatNumber;
+
     private bool isEndCycle;
 
     private void Start()
