@@ -1,12 +1,15 @@
+using JetBrains.Annotations;
 using System;
 using TMPro;
 using UnityEngine;
 
 public class GetRandomNumbers : MonoBehaviour
 {
-    [SerializeField] public static TMP_Text[] inputField;
-
     public static int[] randomInputNumbers;
+
+    [SerializeField][NotNull] private GameObject FolderInputField;
+
+    private int inputFieldCount;
 
     private System.Random random = new();
 
@@ -16,12 +19,14 @@ public class GetRandomNumbers : MonoBehaviour
 
     private void Start()
     {
-        randomInputNumbers = new int[inputField.Length];
-        isRepeatNumber = new bool[inputField.Length];
+        inputFieldCount = FolderInputField.transform.childCount;
+
+        randomInputNumbers = new int[inputFieldCount];
+        isRepeatNumber = new bool[inputFieldCount];
 
         Randomizer();
 
-        for (var i = 0; i < inputField.Length; i++) Debug.Log(randomInputNumbers[i]);
+        for (var i = 0; i < inputFieldCount; i++) Debug.Log(randomInputNumbers[i]);
     }
 
     private void Randomizer()
@@ -36,7 +41,7 @@ public class GetRandomNumbers : MonoBehaviour
 
     private void GenerateRandomNumbers()
     {
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldCount; i++)
         {
             randomInputNumbers[i] = random.Next(0, 10);
         }
@@ -44,7 +49,7 @@ public class GetRandomNumbers : MonoBehaviour
 
     private void UpdateRepeatedNumbers()
     {
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldCount; i++)
         {
             if (isRepeatNumber[i])
             {
@@ -56,9 +61,9 @@ public class GetRandomNumbers : MonoBehaviour
 
     private bool AreAllNumbersUnique()
     {
-        for (var a = 0; a < inputField.Length; a++)
+        for (var a = 0; a < inputFieldCount; a++)
         {
-            for (var b = a + 1; b < inputField.Length; b++)
+            for (var b = a + 1; b < inputFieldCount; b++)
             {
                 if (randomInputNumbers[a] == randomInputNumbers[b])
                 {

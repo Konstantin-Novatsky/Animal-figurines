@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -6,14 +8,16 @@ using static GetRandomNumbers;
 
 public class ButtonUse : MonoBehaviour
 {
-    [SerializeField] private TMP_Text attemptsText;
-    [SerializeField] private Button[] enterNumber;
-    [SerializeField] private Image[] imageNumbers;
-    [SerializeField] private GameObject[] objectImageNumber;
-    [SerializeField] private Sprite[] spriteForImgNum;
+    [SerializeField][NotNull] private TMP_Text[] inputFieldText;
+    [SerializeField][NotNull] private TMP_Text attemptsText;
+    [SerializeField][NotNull] private Button[] numbersButton;
+    [SerializeField][NotNull] private Image[] numbersStatusImage;
+    [SerializeField][NotNull] private GameObject[] numbersStatusObject;
+    [SerializeField][NotNull] private Sprite spriteGreenStatus;
+    [SerializeField][NotNull] private Sprite spriteOrangeStatus;
 
-    private bool[] greenNumber;
-    private bool[] orangeNumber;
+    [NotNull] private bool[] greenNumber;
+    [NotNull] private bool[] orangeNumber;
 
     private int stopNumber;
     private int attemptsCount;
@@ -22,17 +26,17 @@ public class ButtonUse : MonoBehaviour
     private void Start()
     {
         attemptsCount = int.Parse(attemptsText.text);
-        greenNumber = new bool[inputField.Length];
-        orangeNumber = new bool[inputField.Length];
+        greenNumber = new bool[inputFieldText.Length];
+        orangeNumber = new bool[inputFieldText.Length];
     }
 
     public void NextNumber(int number)
     {
-        if (stopNumber >= inputField.Length) return;
+        if (stopNumber >= inputFieldText.Length) return;
 
         SkipGreenCells();
-        if (orangeNumber[stopNumber]) inputField[stopNumber].color = new Color(0, 0, 0, 1);
-        if (!greenNumber[stopNumber]) inputField[stopNumber].text = number.ToString();
+        if (orangeNumber[stopNumber]) inputFieldText[stopNumber].color = new Color(0, 0, 0, 1);
+        if (!greenNumber[stopNumber]) inputFieldText[stopNumber].text = number.ToString();
 
         stopNumber++;
     }
@@ -47,7 +51,7 @@ public class ButtonUse : MonoBehaviour
 
     public void EnterNumbers()
     {
-        if (!IsAllFieldsFilled()) return;
+        if (!IsAllFieldsFilled(inputFieldText)) return;
 
         ResetColors();
 
@@ -67,9 +71,9 @@ public class ButtonUse : MonoBehaviour
 
     private void SkipGreenCells()
     {
-        for (var i = stopNumber; i < inputField.Length; i++)
+        for (var i = stopNumber; i < inputFieldText.Length; i++)
         {
-            if (greenNumber[stopNumber] && stopNumber < inputField.Length - 1) stopNumber++;
+            if (greenNumber[stopNumber] && stopNumber < inputFieldText.Length - 1) stopNumber++;
             else break;
         }
     }
@@ -83,24 +87,24 @@ public class ButtonUse : MonoBehaviour
                 case true when stopNumber > 0:
                     {
                         stopNumber--;
-                        if (!greenNumber[stopNumber]) inputField[stopNumber].text = "";
+                        if (!greenNumber[stopNumber]) inputFieldText[stopNumber].text = "";
                         break;
                     }
                 case false:
-                    inputField[stopNumber].text = "";
+                    inputFieldText[stopNumber].text = "";
                     return;
             }
         }
     }
 
-    private static bool IsAllFieldsFilled()
+    private static bool IsAllFieldsFilled(IEnumerable<TMP_Text> fields)
     {
-        return inputField.All(t => t.text != "");
+        return fields.All(field => !string.IsNullOrEmpty(field.text));
     }
 
     private void ResetColors()
     {
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldText.Length; i++)
         {
             orangeNumber[i] = false;
             greenNumber[i] = false;
@@ -109,24 +113,24 @@ public class ButtonUse : MonoBehaviour
 
     private void FindGreenCells()
     {
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldText.Length; i++)
         {
-            if (randomInputNumbers[i] == int.Parse(inputField[i].text))
+            if (randomInputNumbers[i] == int.Parse(inputFieldText[i].text))
                 greenNumber[i] = true;
         }
     }
 
     private void FindOrangeCells()
     {
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldText.Length; i++)
         {
             if (greenNumber[i]) continue;
 
-            for (var j = 0; j < inputField.Length; j++)
+            for (var j = 0; j < inputFieldText.Length; j++)
             {
                 if (greenNumber[j]) continue;
 
-                if (randomInputNumbers[j] == int.Parse(inputField[i].text))
+                if (randomInputNumbers[j] == int.Parse(inputFieldText[i].text))
                     orangeNumber[i] = true;
             }
         }
@@ -134,29 +138,29 @@ public class ButtonUse : MonoBehaviour
 
     private void UpdateImages()
     {
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldText.Length; i++)
         {
-            objectImageNumber[i].SetActive(false);
+            numbersStatusObject[i].SetActive(false);
         }
 
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldText.Length; i++)
         {
             if (greenNumber[i])
             {
-                imageNumbers[i].sprite = spriteForImgNum[0];
-                objectImageNumber[i].SetActive(true);
+                numbersStatusImage[i].sprite = spriteGreenStatus;
+                numbersStatusObject[i].SetActive(true);
             }
             else if (orangeNumber[i])
             {
-                imageNumbers[i].sprite = spriteForImgNum[1];
-                objectImageNumber[i].SetActive(true);
+                numbersStatusImage[i].sprite = spriteOrangeStatus;
+                numbersStatusObject[i].SetActive(true);
             }
         }
 
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldText.Length; i++)
         {
-            if (!greenNumber[i] && !orangeNumber[i]) inputField[i].text = "";
-            if (orangeNumber[i]) inputField[i].color = new Color(0, 0, 0, 0.5f);
+            if (!greenNumber[i] && !orangeNumber[i]) inputFieldText[i].text = "";
+            if (orangeNumber[i]) inputFieldText[i].color = new Color(0, 0, 0, 0.5f);
         }
     }
 
@@ -164,10 +168,10 @@ public class ButtonUse : MonoBehaviour
     {
         var greenCount = 0;
 
-        for (var i = 0; i < inputField.Length; i++)
+        for (var i = 0; i < inputFieldText.Length; i++)
         {
             if (greenNumber[i]) greenCount++;
-            if (greenCount == inputField.Length)
+            if (greenCount == inputFieldText.Length)
             {
                 attemptsText.text = "Win!";
                 attemptsText.color = new Color(0, 1, 0.07144809f, 1);
@@ -178,7 +182,7 @@ public class ButtonUse : MonoBehaviour
         if (attemptsCount == 0)
         {
             attemptsText.text = "Lose";
-            stopNumber = inputField.Length;
+            stopNumber = inputFieldText.Length;
         }
     }
 }
