@@ -1,9 +1,10 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class OpenURL : MonoBehaviour
 {
-    public string urlGitHub = "https://github.com/Konstantin-Novatsky/Number-three";
-    public string urlTelegram = "https://t.me/Novatsky";
+    [SerializeField] [NotNull] private string urlGitHub = "https://github.com/Konstantin-Novatsky/Number-three";
+    [SerializeField] [NotNull] private string urlTelegram = "https://t.me/Novatsky";
 
     public void OpenGitHub()
     {

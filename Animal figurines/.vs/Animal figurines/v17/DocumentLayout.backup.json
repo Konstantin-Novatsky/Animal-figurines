@@ -3,7 +3,11 @@
   "WorkspaceRootPath": "D:\\Dont Del\\Unity\\Projects\\Animal-figurines\\Animal figurines\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C20F0B0F-9FE3-AE6D-0A06-7AF4DA62B79B}|Assembly-CSharp.csproj|d:\\dont del\\unity\\projects\\animal-figurines\\animal figurines\\assets\\scripts\\menubuttons\\closeapplicationbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C20F0B0F-9FE3-AE6D-0A06-7AF4DA62B79B}|Assembly-CSharp.csproj|d:\\dont del\\unity\\projects\\animal-figurines\\animal figurines\\assets\\scripts\\menubuttons\\openurlbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C20F0B0F-9FE3-AE6D-0A06-7AF4DA62B79B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menubuttons\\openurlbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C20F0B0F-9FE3-AE6D-0A06-7AF4DA62B79B}|Assembly-CSharp.csproj|D:\\Dont Del\\Unity\\Projects\\Animal-figurines\\Animal figurines\\assets\\scripts\\menubuttons\\closeapplicationbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C20F0B0F-9FE3-AE6D-0A06-7AF4DA62B79B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menubuttons\\closeapplicationbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -43,6 +47,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "OpenURLButton.cs",
+              "DocumentMoniker": "D:\\Dont Del\\Unity\\Projects\\Animal-figurines\\Animal figurines\\Assets\\Scripts\\MenuButtons\\OpenURLButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MenuButtons\\OpenURLButton.cs",
+              "ToolTip": "D:\\Dont Del\\Unity\\Projects\\Animal-figurines\\Animal figurines\\Assets\\Scripts\\MenuButtons\\OpenURLButton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MenuButtons\\OpenURLButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T20:18:55.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "CloseApplicationButton.cs",
               "DocumentMoniker": "D:\\Dont Del\\Unity\\Projects\\Animal-figurines\\Animal figurines\\Assets\\Scripts\\MenuButtons\\CloseApplicationButton.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MenuButtons\\CloseApplicationButton.cs",
@@ -55,7 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ButtonUse.cs",
               "DocumentMoniker": "D:\\Dont Del\\Unity\\Projects\\Animal-figurines\\Animal figurines\\Assets\\Scripts\\ButtonUse.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ButtonUse.cs",
@@ -67,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GetRandomNumbers.cs",
               "DocumentMoniker": "D:\\Dont Del\\Unity\\Projects\\Animal-figurines\\Animal figurines\\Assets\\Scripts\\GetRandomNumbers.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GetRandomNumbers.cs",
